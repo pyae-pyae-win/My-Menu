@@ -1,0 +1,170 @@
+
+mysql> use myMenu;
+Database changed
+mysql> select * from Menu;
++----+--------------+------------------------------------------+
+| Id | Name         | Description                              |
++----+--------------+------------------------------------------+
+|  1 | Pizza        | Good taste                               |
+|  2 | Bubble Tea   | Good taste                               |
+|  3 | Apple Juice  | Good taste and fresh and good at healthy |
+|  4 | Orange Juice | Good taste and fresh and good at healthy |
+|  5 | Coffee       | Good taste                               |
++----+--------------+------------------------------------------+
+5 rows in set (0.10 sec)
+
+mysql> select * from Food;
++-----+-------------------+-------+------+
+| fId | Name              | Price | Id   |
++-----+-------------------+-------+------+
+| f1  | Cheese Pizza      | 6000  |    1 |
+| f10 | Coffee            | 1000  |    5 |
+| f2  | Veggie Pizza      | 6000  |    1 |
+| f3  | Pepperoni Pizza   | 8000  |    1 |
+| f4  | Meat Pizza        | 8000  |    1 |
+| f5  | Margherita Pizza  | 7000  |    1 |
+| f6  | BBQ Chicken Pizza | 10000 |    1 |
+| f7  | Bubble Tea        | 2000  |    2 |
+| f8  | Apple Juice       | 1500  |    3 |
+| f9  | Orange Juice      | 1500  |    4 |
++-----+-------------------+-------+------+
+10 rows in set (0.00 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (1,'2020_7_1',10,6000,60000,'f1');
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (2,'2020_7_1',8,6000,48000,'f2');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (3,'2020_7_1',3,8000,18000,'f3');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (4,'2020_7_1',10,10000,100000,'f6');
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (5,'2020_7_1',20,10000,100000,'f7');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (6,'2020_7_1',20,1500,30000,'f8');
+Query OK, 1 row affected (0.27 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (7,'2020_7_1',10,1500,15000,'f9');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (8,'2020_7_1',5,1000,5000,'f10');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> update Orders set Price=2000,Total_Price=40000 where fId='f7';
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Orders;
++---------+------------+------+-------+-------------+------+
+| orderId | Sale_date  | Qty  | Price | Total_Price | fId  |
++---------+------------+------+-------+-------------+------+
+|       1 | 2020-07-01 |   10 |  6000 |       60000 | f1   |
+|       2 | 2020-07-01 |    8 |  6000 |       48000 | f2   |
+|       3 | 2020-07-01 |    3 |  8000 |       18000 | f3   |
+|       4 | 2020-07-01 |   10 | 10000 |      100000 | f6   |
+|       5 | 2020-07-01 |   20 |  2000 |       40000 | f7   |
+|       6 | 2020-07-01 |   20 |  1500 |       30000 | f8   |
+|       7 | 2020-07-01 |   10 |  1500 |       15000 | f9   |
+|       8 | 2020-07-01 |    5 |  1000 |        5000 | f10  |
++---------+------------+------+-------+-------------+------+
+8 rows in set (0.00 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (9,'2020_7_2',10,1500,15000,'f9');
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (10,'2020_7_2',5,1000,5000,'f10');
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (11,'2020_7_3',20,1500,30000,'f8');
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (12,'2020_7_4',20,10000,100000,'f7');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into Orders(orderId,Sale_date,Qty,Price,Total_Price,fId) values (13,'2020_7_5',10,10000,100000,'f6');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> select * from Orders;
++---------+------------+------+-------+-------------+------+
+| orderId | Sale_date  | Qty  | Price | Total_Price | fId  |
++---------+------------+------+-------+-------------+------+
+|       1 | 2020-07-01 |   10 |  6000 |       60000 | f1   |
+|       2 | 2020-07-01 |    8 |  6000 |       48000 | f2   |
+|       3 | 2020-07-01 |    3 |  8000 |       18000 | f3   |
+|       4 | 2020-07-01 |   10 | 10000 |      100000 | f6   |
+|       5 | 2020-07-01 |   20 |  2000 |       40000 | f7   |
+|       6 | 2020-07-01 |   20 |  1500 |       30000 | f8   |
+|       7 | 2020-07-01 |   10 |  1500 |       15000 | f9   |
+|       8 | 2020-07-01 |    5 |  1000 |        5000 | f10  |
+|       9 | 2020-07-02 |   10 |  1500 |       15000 | f9   |
+|      10 | 2020-07-02 |    5 |  1000 |        5000 | f10  |
+|      11 | 2020-07-03 |   20 |  1500 |       30000 | f8   |
+|      12 | 2020-07-04 |   20 | 10000 |      100000 | f7   |
+|      13 | 2020-07-05 |   10 | 10000 |      100000 | f6   |
++---------+------------+------+-------+-------------+------+
+13 rows in set (0.00 sec)
+
+mysql> select orderId,MAX(Qty) from Orders;
++---------+----------+
+| orderId | MAX(Qty) |
++---------+----------+
+|       1 |       20 |
++---------+----------+
+1 row in set (0.01 sec)
+
+mysql> select orderId"Item",MAX(Total_Price)"TotalMa5ximumSaleAmount" from Orders;
++------+-------------------------+
+| Item | TotalMa5ximumSaleAmount |
++------+-------------------------+
+|    1 |                  100000 |
++------+-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select orderId"Item",MAX(Total_Price)"TotalMaximumSaleAmount" from Orders;
++------+------------------------+
+| Item | TotalMaximumSaleAmount |
++------+------------------------+
+|    1 |                 100000 |
++------+------------------------+
+1 row in set (0.00 sec)
+
+mysql> select orderId"Item",MIN(Total_Price)"TotalMaximumSaleAmount" from Orders;
++------+------------------------+
+| Item | TotalMaximumSaleAmount |
++------+------------------------+
+|    1 |                   5000 |
++------+------------------------+
+1 row in set (0.00 sec)
+
+mysql> select Sale_date"Date",Total_Price"Sale Amount" from Orders Order By Sale_date;
++------------+-------------+
+| Date       | Sale Amount |
++------------+-------------+
+| 2020-07-01 |       60000 |
+| 2020-07-01 |       48000 |
+| 2020-07-01 |       18000 |
+| 2020-07-01 |      100000 |
+| 2020-07-01 |       40000 |
+| 2020-07-01 |       30000 |
+| 2020-07-01 |       15000 |
+| 2020-07-01 |        5000 |
+| 2020-07-02 |       15000 |
+| 2020-07-02 |        5000 |
+| 2020-07-03 |       30000 |
+| 2020-07-04 |      100000 |
+| 2020-07-05 |      100000 |
++------------+-------------+
+13 rows in set (0.13 sec)
+
+mysql> select SUM(Total_Price)"Total Amount" from Orders where Sale_date Between '2020_7_1' and '2020_7_5';
++--------------+
+| Total Amount |
++--------------+
+|       566000 |
++--------------+
+1 row in set (0.14 sec)
+
